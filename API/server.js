@@ -5,6 +5,10 @@ const cors = require("cors");
 
 server.use(helmet(), express.json(), cors());
 
+//Imports
+
+//Routes
+
 //Deployment
 server.get("/", (req, res) => {
   res.status(200).json("Successful Deployment");
