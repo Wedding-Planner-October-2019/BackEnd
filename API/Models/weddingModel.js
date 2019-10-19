@@ -3,6 +3,7 @@
 // module.exports = {
 //   find,
 //   findById,
+//   findByUserId,
 //   add,
 //   updateName,
 //   updateContent,
@@ -14,6 +15,10 @@
 // }
 
 // function findById() {
+//   return db;
+// }
+
+// function findByUserId() {
 //   return db;
 // }
 
