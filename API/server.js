@@ -9,3 +9,5 @@ server.use(helmet(), express.json(), cors());
 server.get("/", (req, res) => {
   res.status(200).json("Successful Deployment");
 });
+
+module.exports = server;
