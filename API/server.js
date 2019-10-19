@@ -8,10 +8,12 @@ server.use(helmet(), express.json(), cors());
 //Imports
 // const userRoute = require('./Routes/Auth/user/userRoute');
 // const weddingRoute = require('./Routes/')
+// const portfolioRoute = require('./Routes/nonAuth/portfolio/portfolioRoute');
 
 //Routes
-// server.use('/auth/user', userRoute);
-// server.use('/auth/user/:id/weddings', weddingRoute);
+// server.use('/api/auth/user', userRoute);
+// server.use('/api/auth/user/:id/weddings', weddingRoute);
+// server.use('/api/portfolio', portfolioRoute);
 
 //Deployment
 server.get("/", (req, res) => {
