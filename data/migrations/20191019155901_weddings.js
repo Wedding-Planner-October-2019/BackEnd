@@ -7,6 +7,7 @@ exports.up = function(knex) {
       .notNullable()
       .unique();
     tbl.string("venue", 128);
+    tbl.integer("guest_num");
     tbl.text("description", 512);
     //FK
     tbl
