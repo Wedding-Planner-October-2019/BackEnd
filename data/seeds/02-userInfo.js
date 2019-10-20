@@ -1,13 +1,28 @@
-
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
+  return knex("user_info")
+    .del()
+    .then(function() {
       // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
+      return knex("user_info").insert([
+        {
+          name: "John Smith",
+          phone: 18002341000,
+          email: "johnSmith@gmail.com",
+          location: "Seattle, WA"
+        },
+        {
+          name: "Sarah",
+          phone: 18642341020,
+          email: "creativeweddings@gmail.com",
+          location: "Portland"
+        },
+        {
+          name: "Jessica Jung",
+          phone: 18642341020,
+          email: "jessica.jung.wedding@email.com",
+          location: "Atlanta, GA"
+        }
       ]);
     });
 };

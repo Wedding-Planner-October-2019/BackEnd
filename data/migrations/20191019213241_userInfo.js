@@ -1,6 +1,6 @@
 //UserInfo Table
 exports.up = function(knex) {
-  return knex.schema.createTable("userInfo", userInfo => {
+  return knex.schema.createTable("user_info", userInfo => {
     userInfo.increments(); //PK
     userInfo.string("name", 128).notNullable();
     userInfo.integer("phone", 11);
