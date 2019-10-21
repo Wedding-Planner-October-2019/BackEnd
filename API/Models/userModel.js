@@ -6,7 +6,7 @@ module.exports = {
   findBy,
   findByUsername,
   add,
-  updateContent
+  update
 };
 
 function find() {
@@ -38,6 +38,11 @@ function add(user) {
     });
 }
 
-function updateContent() {
-  return db;
+function update(id, changes) {
+  return db("user")
+    .where({ id })
+    .update(changes)
+    .then(id => {
+      return findById(id);
+    });
 }

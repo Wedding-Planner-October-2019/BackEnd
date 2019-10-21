@@ -1,5 +1,6 @@
 module.exports = {
-  validateUserContent
+  validateUserContent,
+  validateUserId
 };
 const Users = require("../API/Models/userModel");
 
@@ -22,6 +23,20 @@ function validateUserContent(req, res, next) {
     next();
   }
 }
+
+function validateUserId(req, res, next) {
+  const userId = req.params.id;
+  Users.findById(userId).then(valUser => {
+    console.log(valUser);
+    if (valUser) {
+      req.user = valUser;
+      next();
+    } else {
+      res.status(400).json({ message: "invalid user id" });
+    }
+  });
+}
+
 // function validateUserName(req, res, next) {
 //   const userName = req.body.username;
 //   User.findBy(userName).then(valUser => {

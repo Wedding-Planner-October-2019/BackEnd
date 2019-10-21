@@ -5,7 +5,7 @@ const errorRef = require("../../../Middleware/errorRef");
 //get all user wedding
 
 router.get("/", (req, res) => {
-  Weddings.find()
+  Weddings.find(req.params.id)
     .then(wedding => {
       res.status(200).json(wedding);
     })
@@ -27,7 +27,7 @@ router.post("/");
 
 //edit wedding
 
-router.post("/:id");
+router.put("/:id");
 
 //delete wedding
 

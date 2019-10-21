@@ -39,7 +39,7 @@ router.post("/login", mw.validateUserContent, (req, res) => {
         const token = gt.generateToken(user);
 
         //add token to response
-        res.status(200).json({
+        res.status(201).json({
           message: `Welcome ${user.username}!`,
           token
         });
@@ -82,7 +82,20 @@ router.get("/:id", (req, res) => {
 });
 
 //Modify User
-
+router.put("/:id", mw.validateUserId, (req, res) => {
+  Users.update(req.params.id, req.body)
+    .then(upUser => {
+      res.status(201).json({
+        message: "The user was correctly updated",
+        updatedUser: upUser
+      });
+    })
+    .catch(error =>
+      res
+        .status(500)
+        .json({ message: "user unable to update", Err: errorRef(error) })
+    );
+});
 //Delete User
 
 module.exports = router;
