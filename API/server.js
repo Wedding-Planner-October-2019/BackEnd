@@ -6,14 +6,14 @@ const cors = require("cors");
 server.use(helmet(), express.json(), cors());
 
 //Imports
-// const userRoute = require('./Routes/Auth/user/userRoute');
-// const weddingRoute = require('./Routes/')
-// const portfolioRoute = require('./Routes/nonAuth/portfolio/portfolioRoute');
+const userRoute = require("./Routes/Auth/user/userRoute");
+const weddingRoute = require("./Routes/Auth/weddingRoute");
+const portfolioRoute = require("./Routes/nonAuth/portfolio/portfolioRoute");
 
 //Routes
-// server.use('/api/auth/user', userRoute);
-// server.use('/api/auth/user/:id/weddings', weddingRoute);
-// server.use('/api/portfolio', portfolioRoute);
+server.use("/api/auth/user", userRoute);
+server.use("/api/auth/user/:id/weddings", weddingRoute);
+server.use("/api/portfolios", portfolioRoute);
 
 //Deployment
 server.get("/", (req, res) => {

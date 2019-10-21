@@ -13,4 +13,3 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema.dropTableIfExist("users");
 };
-/// I need to add ids on the seed date to link the weddings and userinfo and users together. I need to figure out how to link the migration tables on the down so i can keep the in sperate files. Finish making wedding seed date.
