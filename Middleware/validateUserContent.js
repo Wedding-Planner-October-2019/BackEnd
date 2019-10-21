@@ -1,6 +1,7 @@
 module.exports = {
   validateUserContent,
-  validateUserId
+  validateUserId,
+  validateUserLogin
 };
 const Users = require("../API/Models/userModel");
 
@@ -19,6 +20,16 @@ function validateUserContent(req, res, next) {
     });
   } else if (req.body.password.length !== 12) {
     res.status(404).json({ message: "password must be 12 characters long." });
+  } else {
+    next();
+  }
+}
+
+function validateUserLogin(req, res, next) {
+  if (!req.body.username || !req.body.password) {
+    res.status(400).json({
+      message: "Username, password fields are required."
+    });
   } else {
     next();
   }
