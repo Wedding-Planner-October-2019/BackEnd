@@ -10,11 +10,12 @@ module.exports = {
 };
 
 function find() {
-  return db("user", "user_info");
+  return db("user").select("username", "name", "phone", "email", "location");
 } //working
 
 function findById(id) {
   return db("user")
+    .select("username", "name", "phone", "email", "location")
     .where({ id })
     .first();
 }

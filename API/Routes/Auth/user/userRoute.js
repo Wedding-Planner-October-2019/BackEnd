@@ -1,9 +1,3 @@
-//register
-//login
-//delete
-//modify
-// get users log in
-
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const gt = require("../../../../config/generateToken");
@@ -22,8 +16,7 @@ router.post("/register", mw.validateUserContent, (req, res) => {
     .then(newUser => {
       console.log(newUser);
       res.status(201).json({
-        message: "successfully registered new user",
-        userData: newUser
+        message: `successfully registered new user ${newUser.username}, user ID ${newUser.id}`
       });
     })
     .catch(err => {
@@ -57,23 +50,39 @@ router.post("/login", mw.validateUserContent, (req, res) => {
     .catch(error => {
       res
         .status(500)
-        .json({ message: "failed to login account" }, errorRef(error));
+        .json({ message: "failed to login account", Err: errorRef(error) });
     });
 });
 
-//Get all users
+// Get all users
 router.get("/", (req, res) => {
-  Users.find().then(users => {
-    res.status(200).json(users);
-  });
+  Users.find()
+    .then(users => {
+      res.status(200).json(users);
+    })
+    .catch(error => {
+      res
+        .status(500)
+        .json({ message: "failed to get all the users", Err: errorRef(error) });
+    });
 });
 
 //Get user by id
 router.get("/:id", (req, res) => {
   const id = req.params.id;
-  Users.findById(id).then(user => {
-    res.status(200).json(user);
-  });
+  Users.findById(id)
+    .then(user => {
+      res.status(200).json(user);
+    })
+    .catch(error => {
+      res
+        .status(500)
+        .json({ message: "failed to find user", Err: errorRef(error) });
+    });
 });
+
+//Modify User
+
+//Delete User
 
 module.exports = router;

@@ -7,7 +7,11 @@ module.exports = {
 function generateToken(user) {
   const payload = {
     subject: user.id, // standard claim = sub
-    username: user.username
+    username: user.username,
+    name: user.name,
+    phone: user.phone,
+    email: user.email,
+    location: user.location
   };
   const options = {
     expiresIn: "7d"
