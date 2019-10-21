@@ -96,6 +96,15 @@ router.put("/:id", mw.validateUserId, (req, res) => {
         .json({ message: "user unable to update", Err: errorRef(error) })
     );
 });
+
 //Delete User
+router.delete("/:id", mw.validateUserId, (req, res) => {
+  const id = req.params.id;
+  Users.remove(id)
+    .then(() => {
+      res.status(200).json({ data: `User id ${id} was deleted` });
+    })
+    .catch(err => res.status(500).json({ err: "error", Err: errorRef(error) }));
+});
 
 module.exports = router;
