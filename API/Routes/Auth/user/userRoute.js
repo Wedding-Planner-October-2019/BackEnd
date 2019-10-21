@@ -28,7 +28,7 @@ router.post("/register", mw.validateUserContent, (req, res) => {
 });
 
 //Login for user account
-router.post("/login", mw.validateUserContent, (req, res) => {
+router.post("/login", mw.validateUserLogin, (req, res) => {
   // implement login
   let { username, password } = req.body;
 
