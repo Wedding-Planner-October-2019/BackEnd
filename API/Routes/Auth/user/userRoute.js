@@ -4,6 +4,7 @@ const gt = require("../../../../config/generateToken");
 const Users = require("../../../Models/userModel");
 const mw = require("../../../../Middleware/validateUserContent");
 const errorRef = require("../../../../Middleware/errorRef");
+const restrictionMiddleware = require("../../../../Middleware/restrictionMiddleware");
 
 //Make an account
 router.post("/register", mw.validateUserContent, (req, res) => {
@@ -55,7 +56,7 @@ router.post("/login", mw.validateUserContent, (req, res) => {
 });
 
 // Get all users
-router.get("/", (req, res) => {
+router.get("/", restrictionMiddleware, (req, res) => {
   Users.find()
     .then(users => {
       res.status(200).json(users);
@@ -68,7 +69,7 @@ router.get("/", (req, res) => {
 });
 
 //Get user by id
-router.get("/:id", (req, res) => {
+router.get("/:id", restrictionMiddleware, (req, res) => {
   const id = req.params.id;
   Users.findById(id)
     .then(user => {
@@ -82,7 +83,7 @@ router.get("/:id", (req, res) => {
 });
 
 //Modify User
-router.put("/:id", mw.validateUserId, (req, res) => {
+router.put("/:id", mw.validateUserId, restrictionMiddleware, (req, res) => {
   Users.update(req.params.id, req.body)
     .then(upUser => {
       res.status(201).json({
@@ -98,7 +99,7 @@ router.put("/:id", mw.validateUserId, (req, res) => {
 });
 
 //Delete User
-router.delete("/:id", mw.validateUserId, (req, res) => {
+router.delete("/:id", mw.validateUserId, restrictionMiddleware, (req, res) => {
   const id = req.params.id;
   Users.remove(id)
     .then(() => {

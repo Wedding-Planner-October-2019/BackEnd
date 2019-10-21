@@ -17,8 +17,8 @@ function validateUserContent(req, res, next) {
       message:
         "Username, password, name, email, & location fields are required."
     });
-  } else if (req.body.password.length !== 8) {
-    res.status(404).json({ message: "password must be 8 characters long." });
+  } else if (req.body.password.length !== 12) {
+    res.status(404).json({ message: "password must be 12 characters long." });
   } else {
     next();
   }
@@ -37,25 +37,18 @@ function validateUserId(req, res, next) {
   });
 }
 
-// function validateUserName(req, res, next) {
-//   const userName = req.body.username;
-//   User.findBy(userName).then(valUser => {
-//     console.log(valUser);
-//     if (valUser) {
-//       req.user = valUser;
-//       next();
-//     } else {
-//       res.status(404).json({ message: "Username is already taken" });
-//     }
-//   });
-// }
 // async function checkValidUsername(req, res, next) {
-//   const user = req.body;
-//   const storedUser = await Users.findByUsername(user.username);
-//   if (storedUser && user.username === storedUser.username)
-//     next({
-//       stat: 404,
-//       message: "Username is already taken, please choose another."
-//     });
-//   else next();
+//   const user = req.body.username;
+//   const storedUser = await Users.findBy(user.username);
+//   const storedEmail = await Users.findBy(user.email);
+//   if (storedUser && user.username === storedUser.username) {
+//     res
+//       .status(404)
+//       .json({ message: "Username is already taken, please choose another." });
+//   } else if (storedEmail && user.email === storedUser.email) {
+//     res
+//       .status(404)
+//       .json({ message: "email is already taken, please choose another." });
+//   } else
+//     next()
 // }
