@@ -56,7 +56,7 @@ router.post("/login", mw.validateUserLogin, (req, res) => {
 });
 
 // Get all users
-router.get("/", (req, res) => {
+router.get("/", restrictionMiddleware, (req, res) => {
   Users.find()
     .then(users => {
       res.status(200).json(users);
@@ -69,7 +69,7 @@ router.get("/", (req, res) => {
 });
 
 //Get user by id
-router.get("/:id", (req, res) => {
+router.get("/:id", restrictionMiddleware, (req, res) => {
   const id = req.params.id;
   Users.findById(id)
     .then(user => {
