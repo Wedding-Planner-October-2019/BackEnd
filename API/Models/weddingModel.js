@@ -10,11 +10,11 @@ module.exports = {
   remove
 };
 
-function find(userId) {
-  return db("wedding as w")
-    .join("user as u", "u.id", "w.user_id")
-    .select("w.id", "w")
-    .where("w.user_id", userId);
+function find() {
+  return db("wedding");
+  // .join("user as u", "u.id", "w.user_id")
+  // .select("w.id", "w")
+  // .where("w.user_id", userId);
 }
 
 // unction getUserPosts(userId) {
