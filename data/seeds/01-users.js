@@ -3,9 +3,30 @@ exports.seed = function(knex) {
   return knex("user").then(function() {
     // Inserts seed entries
     return knex("user").insert([
-      { username: "weddingPlaner", password: "password1" },
-      { username: "weddingPlaner1", password: "password1" },
-      { username: "weddingPlaner2", password: "password1" }
+      {
+        username: "weddingPlaner",
+        password: "password1",
+        name: "John Smith",
+        phone: 18002341000,
+        email: "johnSmith@gmail.com",
+        location: "Seattle, WA"
+      },
+      {
+        username: "weddingPlaner1",
+        password: "password1",
+        name: "Sarah",
+        phone: 18642341020,
+        email: "creativeweddings@gmail.com",
+        location: "Portland"
+      },
+      {
+        username: "weddingPlaner2",
+        password: "password1",
+        name: "Jessica Jung",
+        phone: 18642341020,
+        email: "jessica.jung.wedding@email.com",
+        location: "Atlanta, GA"
+      }
     ]);
   });
 };

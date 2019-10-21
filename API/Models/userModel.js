@@ -29,10 +29,12 @@ function findByUsername(username) {
     .first();
 }
 
-async function add(user) {
-  const [id] = await db("user").insert(user, "id");
-
-  return findById(id);
+function add(user) {
+  return db("user")
+    .insert(user)
+    .then(ids => {
+      return findById(ids[0]);
+    });
 }
 
 function updateContent() {

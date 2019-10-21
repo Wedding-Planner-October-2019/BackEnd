@@ -7,6 +7,13 @@ exports.up = function(knex) {
       .notNullable()
       .unique();
     users.string("password", 8).notNullable();
+    users.string("name", 128).notNullable();
+    users.integer("phone", 11);
+    users
+      .string("email", 256)
+      .notNullable()
+      .unique();
+    users.string("location", 128).notNullable();
   });
 };
 

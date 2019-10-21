@@ -11,11 +11,11 @@ exports.up = function(knex) {
     tbl.text("description", 512);
     //FK
     tbl
-      .integer("user_info_id")
+      .integer("user_id")
       .unsigned()
       .notNullable()
       .references("id")
-      .inTable("user_info")
+      .inTable("user")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
   });

@@ -20,14 +20,16 @@ router.post("/register", mw.validateUserContent, (req, res) => {
 
   Users.add(user)
     .then(newUser => {
+      console.log(newUser);
       res.status(201).json({
-        message: `successfully registered as ${newUser.username} your user ID is ${newUser.id}`
+        message: "successfully registered new user",
+        userData: newUser
       });
     })
-    .catch(error => {
+    .catch(err => {
       res
         .status(500)
-        .json({ message: "failed to create account", error }, errorRef(error));
+        .json({ message: "failed to create account", error: errorRef(err) });
     });
 });
 
@@ -57,6 +59,21 @@ router.post("/login", mw.validateUserContent, (req, res) => {
         .status(500)
         .json({ message: "failed to login account" }, errorRef(error));
     });
+});
+
+//Get all users
+router.get("/", (req, res) => {
+  Users.find().then(users => {
+    res.status(200).json(users);
+  });
+});
+
+//Get user by id
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
+  Users.findById(id).then(user => {
+    res.status(200).json(user);
+  });
 });
 
 module.exports = router;
