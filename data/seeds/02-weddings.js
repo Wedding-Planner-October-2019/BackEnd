@@ -25,7 +25,7 @@ exports.seed = function(knex) {
         guest_num: 100,
         description:
           "A beach side wedding set at sunset along the LA California coastline. There were over 100 guests that attended this very romantic wedding. The wedding was slightly overbudget, but it was worth it when the Groom and Bride tied the knot.",
-        user_id: 2
+        user_id: 3
       },
       {
         wedding_name: "The John and Mike's Wedding",
@@ -33,7 +33,7 @@ exports.seed = function(knex) {
         guest_num: 30,
         description:
           "On the sunny beach a small intimate service was held. We were able to plan full fledge wedding dream. Hawaii bringing the classic ocean sounds, and palm trees, the guests of 30 people were able to witness the lovely couple tie the knot.",
-        user_id: 3
+        user_id: 1
       },
       {
         wedding_name: "The Gates's Wedding",
@@ -41,7 +41,7 @@ exports.seed = function(knex) {
         guest_num: 120,
         description:
           "Under the beautiful night sky shining through the space needle windows, a wonderful couple were able to experience their wedding fantasy. The expense of the wedding ended up being way over budget, but the couple did not care. They were able to have over 120 guests that they love and care about see their dream come true.",
-        user_id: 3
+        user_id: 2
       },
       {
         wedding_name: "Hunter & Mackenzie Wedding",

@@ -6,19 +6,21 @@ module.exports = {
 };
 
 function showAll() {
-  // return db("wedding as w")
-  //   .join("user_info as ui", "w.user_info_id", "w.id")
-  //   .select(
-  //     "ui.name",
-  //     "ui.phone",
-  //     "ui.email",
-  //     "ui.location",
-  //     "w.user_info_id",
-  //     "w.wedding_name",
-  //     "w.venue",
-  //     "w.guest_num",
-  //     "w.description"
-  //   );
+  return db("wedding as w")
+    .innerJoin("user as ui", "w.user_id", "w.id")
+    .select(
+      // "ui",
+      // "w"
+      "ui.name",
+      "ui.phone",
+      "ui.email",
+      "ui.location",
+      "w.user_id",
+      "w.wedding_name",
+      "w.venue",
+      "w.guest_num",
+      "w.description"
+    );
   // .where("ui.wedding_id");
   // return db("wedding").where("user_info_id, id");
 }

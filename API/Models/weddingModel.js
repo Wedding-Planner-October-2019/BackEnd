@@ -10,11 +10,9 @@ module.exports = {
   remove
 };
 
-function find() {
+function find(id) {
   return db("wedding");
-  // .join("user as u", "u.id", "w.user_id")
-  // .select("w.id", "w")
-  // .where("w.user_id", userId);
+  // .where('w.user_id')
 }
 
 // unction getUserPosts(userId) {
@@ -28,8 +26,8 @@ function findById() {
   return db;
 }
 
-function findByUserId() {
-  return db;
+function findByUserId(id) {
+  return db("wedding").where({ id });
 }
 
 function add() {

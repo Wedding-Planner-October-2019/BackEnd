@@ -5,7 +5,7 @@ exports.seed = function(knex) {
     return knex("user").insert([
       {
         username: "weddingPlaner",
-        password: "password1",
+        password: "password1234",
         name: "John Smith",
         phone: 18002341000,
         email: "johnSmith@gmail.com",
@@ -13,7 +13,7 @@ exports.seed = function(knex) {
       },
       {
         username: "weddingPlaner1",
-        password: "password1",
+        password: "password1234",
         name: "Sarah",
         phone: 18642341020,
         email: "creativeweddings@gmail.com",
@@ -21,11 +21,11 @@ exports.seed = function(knex) {
       },
       {
         username: "weddingPlaner2",
-        password: "password1",
+        password: "password1234",
         name: "Jessica Jung",
         phone: 18642341020,
         email: "jessica.jung.wedding@email.com",
-        location: "Atlanta, GA"
+        location: "NYC"
       }
     ]);
   });
