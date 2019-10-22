@@ -34,7 +34,8 @@ router.get("/user/:id", (req, res) => {
     })
     .catch(err => {
       res.status(500).json({
-        message: "The User's wedding post information couldn't be retrieved."
+        message: "The User's wedding post information couldn't be retrieved.",
+        error: errorRef(err)
       });
     });
 });
@@ -49,13 +50,15 @@ router.get("/:id", (req, res) => {
         res.status(200).json(wedding);
       } else {
         res.status(400).json({
-          message: "The wedding with this specified ID doesn't exist."
+          message: "The wedding with this specified ID doesn't exist.",
+          error: errorRef(err)
         });
       }
     })
     .catch(err => {
       res.status(500).json({
-        message: "The wedding post information couldn't be retrieved."
+        message: "The wedding post information couldn't be retrieved.",
+        error: errorRef(err)
       });
     });
 });
@@ -68,7 +71,10 @@ router.post("/user/:id", validatePostContent, (req, res) => {
       res.status(201).json(weddingPost);
     })
     .catch(err => {
-      res.status(500).json(errorRef(err));
+      res.status(500).json({
+        message: "failed to create wedding post",
+        error: errorRef(err)
+      });
     });
 });
 //edit wedding
