@@ -77,8 +77,8 @@ router.post("/", validatePostContent, (req, res) => {
     });
 });
 //Create wedding with user id
-router.post("/user/:id", validatePostContent, (req, res) => {
-  const userId = req.params.id;
+router.post("/user/", validatePostContent, (req, res) => {
+  const userId = req.user.id;
   const weddingPost = req.body;
   Weddings.addByUser(userId, weddingPost)
     .then(weddingPost => {
