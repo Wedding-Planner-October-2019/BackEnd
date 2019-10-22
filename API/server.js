@@ -12,7 +12,7 @@ const portfolioRoute = require("./Routes/nonAuth/portfolio/portfolioRoute");
 
 //Routes
 server.use("/api/auth/user", userRoute);
-server.use("/api/auth/wedding", weddingRoute);
+server.use("/api/auth/weddings", weddingRoute);
 server.use("/api/portfolios", portfolioRoute);
 
 //Deployment
