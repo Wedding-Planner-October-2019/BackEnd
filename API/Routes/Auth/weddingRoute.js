@@ -63,7 +63,7 @@ router.get("/:id", (req, res) => {
     });
 });
 //create a wedding post without userID
-router.post("/", (req, res) => {
+router.post("/", validatePostContent, (req, res) => {
   const weddingPost = req.body;
   Weddinds.add(weddingPost)
     .then(wedding => {
