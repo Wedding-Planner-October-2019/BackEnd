@@ -63,6 +63,20 @@ router.get("/:id", (req, res) => {
     });
 });
 //post wedding to specific user
+// router.post("/", validatePostContent, (req, res) => {
+//   const userId = req.params.id;
+//   const weddingPost = req.body;
+//   Weddings.add(userId, weddingPost)
+//     .then(weddingPost => {
+//       res.status(201).json(weddingPost);
+//     })
+//     .catch(err => {
+//       res.status(500).json({
+//         message: "failed to create wedding post",
+//         error: errorRef(err)
+//       });
+//     });
+// });
 router.post("/user/:id", validatePostContent, (req, res) => {
   const userId = req.params.id;
   const weddingPost = req.body;
@@ -92,6 +106,23 @@ router.put("/:id", (req, res) => {
 
 //delete wedding
 
-router.delete("/:id");
+router.delete("/:id", (req, res) => {
+  const id = req.params.id;
+  Weddings.findById(id).then(id => {
+    if (id.length > 0) {
+      Weddings.remove(id)
+        .then(deleted => {
+          res.status.json({ message: "deleted a wedding", Deleted: deleted });
+        })
+        .catch(err => {
+          res.status(500).json(errorRef(err));
+        });
+    } else {
+      res
+        .status(404)
+        .json({ message: "The post with this id does not exist." });
+    }
+  });
+});
 
 module.exports = router;
