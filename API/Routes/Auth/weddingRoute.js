@@ -25,7 +25,10 @@ router.get("/user/", (req, res) => {
     .then(wedding => {
       console.log(wedding);
       if (wedding.length > 0) {
-        res.status(200).json(wedding);
+        res.status(200).json({
+          message: `All of user ID ${userId} weddings`,
+          weddings: wedding
+        });
       } else {
         res.status(400).json({
           message: "The user with this specified ID doesn't exist."

@@ -15,13 +15,6 @@ function find(id) {
   return db("wedding");
 }
 
-// unction getUserPosts(userId) {
-//     return db('posts as p')
-//       .join('users as u', 'u.id', 'p.user_id')
-//       .select('p.id', 'p.text', 'u.name as postedBy')
-//       .where('p.user_id', userId);
-//   }
-
 function findById(id) {
   return db("wedding").where({ id: Number(id) });
 }
