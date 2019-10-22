@@ -129,23 +129,23 @@ router.delete("/:id", (req, res) => {
 });
 
 //Delete all of users weddings
-router.delete("/", (req, res) => {
-  const id = user_id;
-  Weddings.findById(id).then(id => {
-    if (id.length > 0) {
-      Weddings.remove(id)
-        .then(deleted => {
-          res.status.json({ message: "deleted a wedding", Deleted: deleted });
-        })
-        .catch(err => {
-          res.status(500).json(errorRef(err));
-        });
-    } else {
-      res
-        .status(404)
-        .json({ message: "The post with this id does not exist." });
-    }
-  });
-});
+// router.delete("/", (req, res) => {
+//   const id = req.user.id;
+//   Weddings.findById(id).then(id => {
+//     if (id.length > 0) {
+//       Weddings.remove(id)
+//         .then(deleted => {
+//           res.status.json({ message: "deleted a wedding", Deleted: deleted });
+//         })
+//         .catch(err => {
+//           res.status(500).json(errorRef(err));
+//         });
+//     } else {
+//       res
+//         .status(404)
+//         .json({ message: "The post with this id does not exist." });
+//     }
+//   });
+// });
 
 module.exports = router;
