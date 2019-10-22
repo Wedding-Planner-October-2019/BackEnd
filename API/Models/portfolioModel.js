@@ -20,13 +20,13 @@ function showAll() {
       "w.venue",
       "w.guest_num",
       "w.description"
-    )
-    .then(data => {
-      const weddingArray = [];
-      data.push(weddingArray).then(() => {
-        return weddingArray;
-      });
-    });
+    );
+  // // .then(data => {
+  // //   const weddingArray = [];
+  // //   data.push(weddingArray).then(() => {
+  // //     return weddingArray;
+  // //   });
+  // });
 }
 
 // function showProfile(id) {

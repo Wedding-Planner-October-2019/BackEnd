@@ -43,7 +43,10 @@ function add(userId, weddingPost) {
 function updateContent(id, wedding) {
   return db("wedding")
     .where("id", Number(id))
-    .update(wedding);
+    .update(wedding)
+    .then(ids => {
+      return findById(ids);
+    });
 }
 
 function remove(id) {

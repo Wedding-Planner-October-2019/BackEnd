@@ -78,8 +78,17 @@ router.post("/user/:id", validatePostContent, (req, res) => {
     });
 });
 //edit wedding
-
-router.put("/:id");
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const update = req.body;
+  Weddings.updateContent(id, update)
+    .then(update => {
+      res.status(200).json(update);
+    })
+    .catch(err => {
+      res.status(500).json(errorRef(err));
+    });
+});
 
 //delete wedding
 
