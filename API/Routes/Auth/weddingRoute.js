@@ -62,11 +62,25 @@ router.get("/:id", (req, res) => {
       });
     });
 });
-//post wedding to specific user
-router.post("/user/:id", validatePostContent, (req, res) => {
-  const userId = req.params.id;
+//create a wedding post without userID
+router.post("/", validatePostContent, (req, res) => {
   const weddingPost = req.body;
-  Weddings.add(userId, weddingPost)
+  Weddinds.add(weddingPost)
+    .then(wedding => {
+      res.status(201).json(wedding);
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: "failed to create wedding post",
+        error: errorRef(err)
+      });
+    });
+});
+//Create wedding with user id
+router.post("/user/", validatePostContent, (req, res) => {
+  const userId = req.user.id;
+  const weddingPost = req.body;
+  Weddings.addByUser(userId, weddingPost)
     .then(weddingPost => {
       res.status(201).json(weddingPost);
     })
@@ -78,11 +92,37 @@ router.post("/user/:id", validatePostContent, (req, res) => {
     });
 });
 //edit wedding
-
-router.put("/:id");
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const update = req.body;
+  Weddings.updateContent(id, update)
+    .then(update => {
+      res.status(200).json(update);
+    })
+    .catch(err => {
+      res.status(500).json(errorRef(err));
+    });
+});
 
 //delete wedding
 
-router.delete("/:id");
+router.delete("/:id", (req, res) => {
+  const id = req.params.id;
+  Weddings.findById(id).then(id => {
+    if (id.length > 0) {
+      Weddings.remove(id)
+        .then(deleted => {
+          res.status.json({ message: "deleted a wedding", Deleted: deleted });
+        })
+        .catch(err => {
+          res.status(500).json(errorRef(err));
+        });
+    } else {
+      res
+        .status(404)
+        .json({ message: "The post with this id does not exist." });
+    }
+  });
+});
 
 module.exports = router;
