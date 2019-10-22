@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Weddings = require("../../../API/Models/weddingModel");
 const errorRef = require("../../../Middleware/errorRef");
+const validatePostContent = require("../../../Middleware/validatePostContent");
 
 //get all user wedding
 
@@ -59,7 +60,7 @@ router.get("/:id", (req, res) => {
     });
 });
 //post wedding to specific user
-router.post("/user/:id", (req, res) => {
+router.post("/user/:id", validatePostContent, (req, res) => {
   const userId = req.params.id;
   const weddingPost = req.body;
   Weddings.add(userId, weddingPost)
