@@ -19,8 +19,8 @@ router.get("/", (req, res) => {
 });
 
 //get user's wedding by ID
-router.get("/user/:id", (req, res) => {
-  const userId = req.params.id;
+router.get("/user/", (req, res) => {
+  const userId = req.user.id;
   Weddings.findByUserId(userId)
     .then(wedding => {
       console.log(wedding);
@@ -104,10 +104,30 @@ router.put("/:id", (req, res) => {
     });
 });
 
-//delete wedding
+//delete wedding by its id
 
 router.delete("/:id", (req, res) => {
   const id = req.params.id;
+  Weddings.findById(id).then(id => {
+    if (id.length > 0) {
+      Weddings.remove(id)
+        .then(deleted => {
+          res.status.json({ message: "deleted a wedding", Deleted: deleted });
+        })
+        .catch(err => {
+          res.status(500).json(errorRef(err));
+        });
+    } else {
+      res
+        .status(404)
+        .json({ message: "The post with this id does not exist." });
+    }
+  });
+});
+
+//Delete all of users weddings
+router.delete("/", (req, res) => {
+  const id = user_id;
   Weddings.findById(id).then(id => {
     if (id.length > 0) {
       Weddings.remove(id)
