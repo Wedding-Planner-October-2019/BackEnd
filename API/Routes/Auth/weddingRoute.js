@@ -62,11 +62,25 @@ router.get("/:id", (req, res) => {
       });
     });
 });
-
+//create a wedding post without userID
+router.post("/", (req, res) => {
+  const weddingPost = req.body;
+  Weddinds.add(weddingPost)
+    .then(wedding => {
+      res.status(201).json(wedding);
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: "failed to create wedding post",
+        error: errorRef(err)
+      });
+    });
+});
+//Create wedding with user id
 router.post("/user/:id", validatePostContent, (req, res) => {
   const userId = req.params.id;
   const weddingPost = req.body;
-  Weddings.add(userId, weddingPost)
+  Weddings.addByUser(userId, weddingPost)
     .then(weddingPost => {
       res.status(201).json(weddingPost);
     })
