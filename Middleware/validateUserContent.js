@@ -18,8 +18,10 @@ function validateUserContent(req, res, next) {
       message:
         "Username, password, name, email, & location fields are required."
     });
-  } else if (req.body.password.length !== 12) {
-    res.status(404).json({ message: "password must be 12 characters long." });
+  } else if (req.body.password.length < 12) {
+    res
+      .status(400)
+      .json({ message: "password must be at least 12 characters long." });
   } else {
     next();
   }

@@ -20,7 +20,13 @@ function showAll() {
       "w.venue",
       "w.guest_num",
       "w.description"
-    );
+    )
+    .then(data => {
+      const weddingArray = [];
+      data.push(weddingArray).then(() => {
+        return weddingArray;
+      });
+    });
 }
 
 // function showProfile(id) {
@@ -30,3 +36,8 @@ function showAll() {
 //     .where({ id })
 //     .first();
 // }
+
+//NOTES
+//look at how post project works
+//wedding will use join and select like a tradtional post
+//create search function by filter by user_id for portfolios
