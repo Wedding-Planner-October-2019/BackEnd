@@ -9,20 +9,24 @@ function showAll() {
   return db("wedding as w")
     .innerJoin("user as ui", "w.user_id", "w.id")
     .select(
-      // "ui",
-      // "w"
+      "ui.id",
       "ui.name",
       "ui.phone",
       "ui.email",
       "ui.location",
       "w.user_id",
+      "w.id",
       "w.wedding_name",
       "w.venue",
       "w.guest_num",
       "w.description"
-    );
-  // .where("ui.wedding_id");
-  // return db("wedding").where("user_info_id, id");
+    )
+    .then(data => {
+      const weddingArray = [];
+      data.push(weddingArray).then(() => {
+        return weddingArray;
+      });
+    });
 }
 
 // function showProfile(id) {
@@ -32,3 +36,8 @@ function showAll() {
 //     .where({ id })
 //     .first();
 // }
+
+//NOTES
+//look at how post project works
+//wedding will use join and select like a tradtional post
+//create search function by filter by user_id for portfolios
