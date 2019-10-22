@@ -6,7 +6,8 @@ module.exports = {
   findByUserId,
   add,
   updateContent,
-  remove
+  remove,
+  removeAllWeddings
 };
 
 function find(id) {
@@ -29,10 +30,14 @@ function findByUserId(id) {
   return db("wedding").where({ user_id: Number(id) });
 }
 
-function add(wedding) {
+function add(userId, weddingPost) {
+  weddingPost.user_id = userId;
   return db("wedding")
-    .insert(wedding)
-    .then(ids => ({ id: ids[0] }, { post: post }));
+    .where("user_id", Number(userId))
+    .insert(weddingPost)
+    .then(ids => {
+      return findById(ids[0]);
+    });
 }
 
 function updateContent(id, wedding) {
@@ -44,5 +49,10 @@ function updateContent(id, wedding) {
 function remove(id) {
   return db("wedding")
     .where("id", Number(id))
+    .del();
+}
+function removeAllWeddings(id) {
+  return db("wedding")
+    .where("user_id", Number(id))
     .del();
 }

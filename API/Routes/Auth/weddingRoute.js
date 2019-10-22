@@ -58,10 +58,18 @@ router.get("/:id", (req, res) => {
       });
     });
 });
-//post wedding
-
-router.post("/");
-
+//post wedding to specific user
+router.post("/user/:id", (req, res) => {
+  const userId = req.params.id;
+  const weddingPost = req.body;
+  Weddings.add(userId, weddingPost)
+    .then(weddingPost => {
+      res.status(201).json(weddingPost);
+    })
+    .catch(err => {
+      res.status(500).json(errorRef(err));
+    });
+});
 //edit wedding
 
 router.put("/:id");
