@@ -62,21 +62,7 @@ router.get("/:id", (req, res) => {
       });
     });
 });
-//post wedding to specific user
-// router.post("/", validatePostContent, (req, res) => {
-//   const userId = req.params.id;
-//   const weddingPost = req.body;
-//   Weddings.add(userId, weddingPost)
-//     .then(weddingPost => {
-//       res.status(201).json(weddingPost);
-//     })
-//     .catch(err => {
-//       res.status(500).json({
-//         message: "failed to create wedding post",
-//         error: errorRef(err)
-//       });
-//     });
-// });
+
 router.post("/user/:id", validatePostContent, (req, res) => {
   const userId = req.params.id;
   const weddingPost = req.body;

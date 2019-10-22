@@ -30,15 +30,6 @@ function findByUserId(id) {
   return db("wedding").where({ user_id: Number(id) });
 }
 
-// function add(userId, weddingPost) {
-//   weddingPost.user_id = userId;
-//   return db("wedding")
-//     .where("user_id", Number(userId))
-//     .insert(weddingPost)
-//     .then(ids => {
-//       return findById(ids[0]);
-//     });
-// }
 function add(userId, weddingPost) {
   weddingPost.user_id = userId;
   return db("wedding")
