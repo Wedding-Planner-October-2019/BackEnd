@@ -2,6 +2,7 @@ const express = require("express");
 const helmet = require("helmet");
 const server = express();
 const cors = require("cors");
+const restrictionMiddleware = require("../Middleware/restrictionMiddleware");
 
 server.use(helmet(), express.json(), cors());
 
@@ -12,7 +13,7 @@ const portfolioRoute = require("./Routes/nonAuth/portfolio/portfolioRoute");
 
 //Routes
 server.use("/api/auth/user", userRoute);
-server.use("/api/auth/wedding", weddingRoute);
+server.use("/api/auth/weddings", restrictionMiddleware, weddingRoute);
 server.use("/api/portfolios", portfolioRoute);
 
 //Deployment
