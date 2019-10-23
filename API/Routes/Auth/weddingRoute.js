@@ -114,7 +114,9 @@ router.delete("/:id", (req, res) => {
     if (id.length > 0) {
       Weddings.remove(id)
         .then(deleted => {
-          res.status.json({ message: "deleted a wedding", Deleted: deleted });
+          res
+            .status(200)
+            .json({ message: "deleted a wedding", Deleted: deleted });
         })
         .catch(err => {
           res.status(500).json(errorRef(err));

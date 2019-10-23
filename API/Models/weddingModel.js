@@ -16,7 +16,7 @@ function find(id) {
 }
 
 function findById(id) {
-  return db("wedding").where({ id: Number(id) });
+  return db("wedding").where({ id });
 }
 
 function findByUserId(id) {
@@ -49,8 +49,9 @@ function updateContent(id, wedding) {
 }
 
 function remove(id) {
+  console.log(id);
   return db("wedding")
-    .where("id", Number(id))
+    .where({ id })
     .del();
 }
 function removeAllWeddings(id) {
