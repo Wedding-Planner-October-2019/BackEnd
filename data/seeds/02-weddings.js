@@ -41,6 +41,8 @@ exports.seed = function(knex) {
         guest_num: 120,
         description:
           "Under the beautiful night sky shining through the space needle windows, a wonderful couple were able to experience their wedding fantasy. The expense of the wedding ended up being way over budget, but the couple did not care. They were able to have over 120 guests that they love and care about see their dream come true.",
+        image_url:
+          "https://images.unsplash.com/photo-1553102674-af685bb5fe40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3750&q=80",
         user_id: 2
       },
       {
@@ -49,6 +51,7 @@ exports.seed = function(knex) {
         guest_num: 150,
         description:
           "It was a nontraditional wedding held on a warm summer afternoon. We were able to plan a wedding for over 150 guests. The theme was formal country with a slight winery feel.",
+        image_url: "",
         user_id: 3
       }
     ]);

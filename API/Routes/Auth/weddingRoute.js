@@ -53,8 +53,7 @@ router.get("/:id", (req, res) => {
         res.status(200).json(wedding);
       } else {
         res.status(400).json({
-          message: "The wedding with this specified ID doesn't exist.",
-          error: errorRef(err)
+          message: "The wedding with this specified ID doesn't exist."
         });
       }
     })
