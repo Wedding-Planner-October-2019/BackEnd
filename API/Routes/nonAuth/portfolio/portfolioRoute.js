@@ -24,9 +24,16 @@ router.get("/", (req, res) => {
 //get user info and wedding by id
 router.get("/:id", (req, res) => {
   const id = req.params.id;
-  Portfolio.showProfile(id).then(portfolio => {
-    res.status(200);
-  });
+  Portfolio.showProfile(id)
+    .then(portfolio => {
+      res.status(200).json(portfolio);
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: "failed to load this wedding planners portfolio",
+        error: errorRef(err)
+      });
+    });
 });
 
 module.exports = router;
