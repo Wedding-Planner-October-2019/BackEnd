@@ -9,6 +9,7 @@ exports.up = function(knex) {
     tbl.string("venue", 128);
     tbl.integer("guest_num");
     tbl.text("description", 512);
+    tbl.string("image_url");
     //FK
     tbl
       .integer("user_id")

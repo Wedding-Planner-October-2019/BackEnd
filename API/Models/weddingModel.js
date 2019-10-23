@@ -16,7 +16,8 @@ function find(id) {
 }
 
 function findById(id) {
-  return db("wedding").where({ id: Number(id) });
+  console.log("findbyID", id);
+  return db("wedding").where("id", Number(id));
 }
 
 function findByUserId(id) {
@@ -39,22 +40,30 @@ function add(wedding) {
     .then(([id]) => findById(id));
 }
 
-function updateContent(id, wedding) {
-  return db("wedding")
-    .where("id", Number(id))
-    .update(wedding)
-    .then(ids => {
-      return findById(ids);
-    });
+async function updateContent(id, wedding) {
+  console.log("wedding", wedding);
+  await db("wedding")
+    .update({
+      wedding_name: wedding.wedding_name,
+      venue: wedding.venue,
+      guest_num: wedding.guest_num,
+      description: wedding.description,
+      image_url: wedding.image_url
+    })
+    .where("id", Number(id));
+
+  return findById(Number(id));
 }
 
 function remove(id) {
+  console.log("deleted", id);
   return db("wedding")
-    .where("id", Number(id))
-    .del();
+    .del()
+    .where("id", id);
 }
+
 function removeAllWeddings(id) {
   return db("wedding")
     .where("user_id", Number(id))
-    .del();
+    .delete();
 }

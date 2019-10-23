@@ -3,8 +3,8 @@ const helmet = require("helmet");
 const server = express();
 const cors = require("cors");
 const restrictionMiddleware = require("../Middleware/restrictionMiddleware");
-
-server.use(helmet(), express.json(), cors());
+const logger = require("../Middleware/loggerMiddleware");
+server.use(helmet(), express.json(), cors(), logger);
 
 //Imports
 const userRoute = require("./Routes/Auth/user/userRoute");
