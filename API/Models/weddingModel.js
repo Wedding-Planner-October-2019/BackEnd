@@ -16,7 +16,7 @@ function find(id) {
 }
 
 function findById(id) {
-  return db("wedding").where({ id });
+  return db("wedding").where("id", Number(id));
 }
 
 function findByUserId(id) {
@@ -51,11 +51,11 @@ function updateContent(id, wedding) {
 function remove(id) {
   console.log(id);
   return db("wedding")
-    .where({ id })
+    .where("id", Number(id))
     .del();
 }
 function removeAllWeddings(id) {
   return db("wedding")
     .where("user_id", Number(id))
-    .del();
+    .delete();
 }
