@@ -6,37 +6,16 @@ module.exports = {
 };
 
 function showAll() {
-  return db("wedding as w")
-    .innerJoin("user as ui", "w.user_id", "w.id")
-    .select(
-      "ui.id",
-      "ui.name",
-      "ui.phone",
-      "ui.email",
-      "ui.location",
-      "w.user_id",
-      "w.id",
-      "w.wedding_name",
-      "w.venue",
-      "w.guest_num",
-      "w.description"
-    );
-  // // .then(data => {
-  // //   const weddingArray = [];
-  // //   data.push(weddingArray).then(() => {
-  // //     return weddingArray;
-  // //   });
+  // return db("wedding");
+  return db("user as u")
+    .join("wedding as w", "w.user_id", "u.id")
+    .select("u.id", "u.name", "u.phone", "u.email", "u.location", "w.*");
+  // .select("ui.id", "ui.name", "ui.phone", "ui.email", "ui.location", "w.*");
+  //   .then(weddings => {
+  //     weddings.sort(weddings.user_id);
+  //     return weddings;
   // });
 }
-
-// function showProfile(id) {
-//   //use find ID to and then select only the user's name, contact info, and weddings.
-//   return db("user_info")
-//     .select("id", "name")
-//     .where({ id })
-//     .first();
-// }
-
 //NOTES
 //look at how post project works
 //wedding will use join and select like a tradtional post
