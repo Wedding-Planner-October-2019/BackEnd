@@ -95,11 +95,12 @@ router.post("/user/", validatePostContent, (req, res) => {
 });
 //edit wedding
 router.put("/:id", (req, res) => {
-  const { id } = req.params;
+  const id = req.params.id;
   const update = req.body;
   Weddings.updateContent(id, update)
-    .then(update => {
-      res.status(200).json(update);
+    .then(updateRes => {
+      console.log("update", updateRes);
+      res.status(200).json(updateRes);
     })
     .catch(err => {
       res.status(500).json(errorRef(err));
@@ -110,23 +111,25 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   const id = req.params.id;
-  Weddings.findById(id).then(id => {
-    if (id.length > 0) {
-      Weddings.remove(id)
-        .then(deleted => {
-          res
-            .status(200)
-            .json({ message: "deleted a wedding", Deleted: deleted });
-        })
-        .catch(err => {
-          res.status(500).json(errorRef(err));
-        });
-    } else {
-      res
-        .status(404)
-        .json({ message: "The post with this id does not exist." });
-    }
-  });
+  Weddings.findById(id)
+    .first()
+    .then(obj => {
+      if (obj) {
+        Weddings.remove(obj.id)
+          .then(deleted => {
+            res
+              .status(200)
+              .json({ message: "deleted a wedding", Deleted: deleted });
+          })
+          .catch(err => {
+            res.status(500).json(errorRef(err));
+          });
+      } else {
+        res
+          .status(404)
+          .json({ message: "The post with this id does not exist." });
+      }
+    });
 });
 
 module.exports = router;
