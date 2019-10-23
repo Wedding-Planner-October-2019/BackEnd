@@ -311,3 +311,26 @@ edit a wedding post by its ID. It will require a token. It will use the url para
     user_id: 2
 }
 ```
+
+## DELETE /auth/weddings/:id
+
+Delete a wedding post by its ID. It will require a token. It will use the url paramas determine the wedding ID.
+
+#### Expected Payload:
+
+/auth/weddings/1
+
+```
+{
+    "token":    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo0LCJ1c2VybmFtZSI6ImRvZ21hbiIsImlhdCI6MTU3MTg1Njc3MCwiZXhwIjoxNTcyNDYxNTcwfQ.MmbUwBClpdWGcucir8Z_EF-_THs8TtwcqC2lM_HbK6g"
+}
+```
+
+#### Returns:
+
+```
+{
+  "message": "deleted a wedding",
+  "Deleted": 1
+}
+```
