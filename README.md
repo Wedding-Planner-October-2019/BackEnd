@@ -337,23 +337,112 @@ Delete a wedding post by its ID. It will require a token. It will use the url pa
 
 ## GET /portfolios
 
-A public unpro
+A public unprotected route that gives you an array of all of the users basic contact info with their wedding post.
 
 #### Expected Payload:
 
-/auth/weddings/1
-
 ```
-{
-    "token":    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo0LCJ1c2VybmFtZSI6ImRvZ21hbiIsImlhdCI6MTU3MTg1Njc3MCwiZXhwIjoxNTcyNDYxNTcwfQ.MmbUwBClpdWGcucir8Z_EF-_THs8TtwcqC2lM_HbK6g"
-}
+null
 ```
 
 #### Returns:
 
 ```
-{
-  "message": "deleted a wedding",
-  "Deleted": 1
-}
+[
+  {
+    "id": 1,
+    "name": "John Smith",
+    "phone": 18002341000,
+    "email": "johnSmith@gmail.com",
+    "location": "Seattle, WA",
+    "wedding_name": "Smith's Wedding",
+    "venue": "Old Winery",
+    "guest_num": 200,
+    "description": "It was a traditional winery wedding held on a lovely summer evening. We were able to plan a wedding for over 200 guests. I kept the event underbudget",
+    "image_url": null,
+    "user_id": 1
+  },
+  {
+    "id": 5,
+    "name": "Sarah",
+    "phone": 18642341020,
+    "email": "creativeweddings@gmail.com",
+    "location": "Portland",
+    "wedding_name": "The Gates's Wedding",
+    "venue": "Space needle",
+    "guest_num": 120,
+    "description": "Under the beautiful night sky shining through the space needle windows, a wonderful couple were able to experience their wedding fantasy. The expense of the wedding ended up being way over budget, but the couple did not care. They were able to have over 120 guests that they love and care about see their dream come true.",
+    "image_url": "https://images.unsplash.com/photo-1553102674-af685bb5fe40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3750&q=80",
+    "user_id": 2
+  },
+  {
+    "id": 3,
+    "name": "Jessica Jung",
+    "phone": 18642341020,
+    "email": "jessica.jung.wedding@email.com",
+    "location": "NYC",
+    "wedding_name": "Tori and Darci Wedding",
+    "venue": "Beach Side Resort",
+    "guest_num": 100,
+    "description": "A beach side wedding set at sunset along the LA California coastline. There were over 100 guests that attended this very romantic wedding. The wedding was slightly overbudget, but it was worth it when the Groom and Bride tied the knot.",
+    "image_url": null,
+    "user_id": 3
+  },
+  {
+    "id": 6,
+    "name": "Jessica Jung",
+    "phone": 18642341020,
+    "email": "jessica.jung.wedding@email.com",
+    "location": "NYC",
+    "wedding_name": "j's edding",
+    "venue": "Old Winey",
+    "guest_num": 100,
+    "description": "It wass fu",
+    "image_url": "",
+    "user_id": 3
+  }
+]
+```
+
+## GET /portfolios/:id
+
+A public unprotected route that gives you an array of a users basic contact info with their wedding post.
+
+#### Expected Payload:
+
+```
+put the user's ID in the url of the get request
+```
+
+#### Returns:
+
+```
+[
+  {
+    "id": 3,
+    "name": "Jessica Jung",
+    "phone": 18642341020,
+    "email": "jessica.jung.wedding@email.com",
+    "location": "NYC",
+    "wedding_name": "Tori and Darci Wedding",
+    "venue": "Beach Side Resort",
+    "guest_num": 100,
+    "description": "A beach side wedding set at sunset along the LA California coastline. There were over 100 guests that attended this very romantic wedding. The wedding was slightly overbudget, but it was worth it when the Groom and Bride tied the knot.",
+    "image_url": null,
+    "user_id": 3
+  },
+  {
+    "id": 6,
+    "name": "Jessica Jung",
+    "phone": 18642341020,
+    "email": "jessica.jung.wedding@email.com",
+    "location": "NYC",
+    "wedding_name": "jon's wedding",
+    "venue": "Old Winey",
+    "guest_num": 100,
+    "description": "It wass fun",
+    "image_url": "",
+    "user_id": 3
+  }
+]
 ```
