@@ -69,7 +69,7 @@ router.get("/", restrictionMiddleware, (req, res) => {
 });
 
 //Get user by id
-router.get("/:id", restrictionMiddleware, (req, res) => {
+router.get("/:id", restrictionMiddleware, mw.validateUserId, (req, res) => {
   const id = req.params.id;
   Users.findById(id)
     .then(user => {
