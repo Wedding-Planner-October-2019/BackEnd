@@ -6,7 +6,7 @@ const errorRef = require("../../../../Middleware/errorRef");
 
 const Portfolio = require("../../../Models/portfolioModel");
 
-//get all
+//get all wedding and user info unprotected
 router.get("/", (req, res) => {
   // const { id } = req.params;
   Portfolio.showAll()
@@ -21,9 +21,12 @@ router.get("/", (req, res) => {
     });
 });
 
-//get all user weddings
-
-//get user info
-
 //get user info and wedding by id
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
+  Portfolio.showProfile(id).then(portfolio => {
+    res.status(200);
+  });
+});
+
 module.exports = router;
