@@ -5,7 +5,7 @@ const router = express.Router();
 const errorRef = require("../../../../Middleware/errorRef");
 
 const Portfolio = require("../../../Models/portfolioModel");
-
+const mw = require("../../../../Middleware/validateUserContent");
 //get all wedding and user info unprotected
 router.get("/", (req, res) => {
   // const { id } = req.params;
@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
 });
 
 //get user info and wedding by id
-router.get("/:id", (req, res) => {
+router.get("/:id", mw.validateUserId, (req, res) => {
   const id = req.params.id;
   Portfolio.showProfile(id)
     .then(portfolio => {
