@@ -11,8 +11,7 @@ function validateUserContent(req, res, next) {
     !req.body.username ||
     !req.body.password ||
     !req.body.name ||
-    !req.body.email ||
-    !req.body.location
+    !req.body.email
   ) {
     res.status(400).json({
       message:
