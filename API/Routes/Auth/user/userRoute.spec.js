@@ -2,6 +2,11 @@ const request = require("supertest");
 const server = require("../../../server");
 const db = require("../../../../config/dbConfig");
 
+// TESTING FORMAT:
+//1. does it return the correct status code for the input provided?
+// 2. does it return the data in the expected format?
+// 3. does the data returned, if any, have the right content?
+
 describe("User Route", () => {
   beforeAll(() => {
     return db.seed.run();
