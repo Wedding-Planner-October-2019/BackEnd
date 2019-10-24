@@ -13,7 +13,7 @@ exports.up = function(knex) {
       .string("email", 256)
       .notNullable()
       .unique();
-    users.string("location", 128).notNullable();
+    users.string("location", 128);
   });
 };
 
