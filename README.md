@@ -29,9 +29,9 @@ Hosted URL for BackEnd
 }
 ```
 
-## POST /auth/user/login
+## POST /auth/user/register
 
-The email and username must be unique and are required. The password must be 12 characters.
+The email and username must be unique and are required.password require.The password must be 12 characters.
 
 #### Expected Payload:
 
