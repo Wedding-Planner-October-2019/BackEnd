@@ -52,7 +52,7 @@ async function updateContent(id, wedding) {
     })
     .where("id", Number(id));
 
-  return findById(Number(id));
+  return findById(Number(id)).first();
 }
 
 function remove(id) {

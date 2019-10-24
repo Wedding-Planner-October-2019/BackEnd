@@ -30,7 +30,7 @@ router.get("/user/", (req, res) => {
           weddings: wedding
         });
       } else {
-        res.status(400).json({
+        res.status(404).json({
           message: "The user with this specified ID doesn't exist."
         });
       }
@@ -52,7 +52,7 @@ router.get("/:id", (req, res) => {
       if (wedding.length > 0) {
         res.status(200).json(wedding);
       } else {
-        res.status(400).json({
+        res.status(404).json({
           message: "The wedding with this specified ID doesn't exist."
         });
       }
