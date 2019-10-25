@@ -192,7 +192,7 @@ create a wedding post for the current user. will require a token. It will user's
 }
 ```
 
-## GET /auth/weddings/user/
+## GET /auth/weddings/
 
 Returns an array of all wedding post. It will require a token.
 
