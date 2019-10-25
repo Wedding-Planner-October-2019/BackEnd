@@ -1,7 +1,8 @@
 # Wedding Planner Portfolio Backend
 
 This API allows you to create a User Known as a wedding planner, who can create a portfolio of weddings they have worked on.
-Hosted URL for BackEnd
+
+### Hosted URL for BackEnd
 
 ## [https://wedding-planner-buildweek.herokuapp.com/](https://wedding-planner-buildweek.herokuapp.com/)
 
@@ -116,46 +117,6 @@ Will get current user. Requires client to be logged in with a token.
     email: "johnSmith@gmail.com",
     location: "Seattle, WA"
 }
-```
-
-## GET /auth/user/
-
-Will get an array of all the current users. Requires client to be logged in with a token.
-
-#### Expected Payload:
-
-```
-{
-    "token":    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo0LCJ1c2VybmFtZSI6ImRvZ21hbiIsImlhdCI6MTU3MTg1Njc3MCwiZXhwIjoxNTcyNDYxNTcwfQ.MmbUwBClpdWGcucir8Z_EF-_THs8TtwcqC2lM_HbK6g"
-}
-```
-
-#### Returns:
-
-```
-[
-    {
-    username: "weddingPlaner",
-    name: "John Smith",
-    phone: 18002341000,
-    email: "johnSmith@gmail.com",
-    location: "Seattle, WA"
-    },
-    {
-    username: "weddingPlaner1",
-    name: "Sarah",
-    phone: 18642341020,
-    email: "creativeweddings@gmail.com",
-    location: "Portland"
-    },
-    {
-    username: "weddingPlaner2",
-    name: "Jessica Jung",
-    phone: 18642341020,
-    email: "jessica.jung.wedding@email.com",
-    location: "NYC"
-    }
-]
 ```
 
 ## POST /auth/weddings/user/
