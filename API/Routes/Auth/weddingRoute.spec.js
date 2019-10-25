@@ -1,6 +1,6 @@
 const request = require("supertest");
 const server = require("../../server");
-
+let token;
 describe("Wedding Route", () => {
   it("should set testing environment", () => {
     expect(process.env.DB_ENV).toBe("testing");
@@ -19,6 +19,26 @@ describe("Wedding Route", () => {
       const response = await request(server).get("/api/auth/weddings/");
       // toMatch uses a regular expression to check the value
       expect(response.type).toMatch(/json/i);
+    });
+  });
+  describe("Get /api/auth/weddings", () => {
+    beforeAll(done => {
+      request(server)
+        .post("/api/auth/user/login")
+        .send({ username: "testMan1", password: "password2222" })
+        .end((err, res) => {
+          token = res.body.token;
+          console.log(res.body);
+          done();
+        });
+    });
+    it("should return http status of 200 with token", () => {
+      return request(server)
+        .get("/api/auth/weddings/")
+        .set("Authorization", token)
+        .then(response => {
+          expect(response.status).toBe(200);
+        });
     });
   });
 });
