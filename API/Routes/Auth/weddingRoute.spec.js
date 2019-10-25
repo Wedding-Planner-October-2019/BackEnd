@@ -32,7 +32,7 @@ describe("Wedding Route", () => {
           done();
         });
     });
-    it("should return http status of 200 with token", () => {
+    it("should return http status of 200 with token", async () => {
       return request(server)
         .get("/api/auth/weddings/")
         .set("Authorization", token)

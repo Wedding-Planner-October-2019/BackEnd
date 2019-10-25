@@ -8,9 +8,6 @@ const db = require("../../../../config/dbConfig");
 // 3. does the data returned, if any, have the right content?
 
 describe("User Route", () => {
-  beforeAll(() => {
-    return db.seed.run();
-  });
   it("should set testing environment", () => {
     expect(process.env.DB_ENV).toBe("testing");
   });
@@ -26,6 +23,9 @@ describe("User Route", () => {
     });
   });
   describe("POST /api/auth/user/register", () => {
+    beforeAll(() => {
+      return db.seed.run();
+    });
     it("should register a new account", () => {
       return request(server)
         .post("/api/auth/user/register")
